@@ -21,7 +21,7 @@ import features  # noqa: E402  # premium-pack
 
 ROOT = Path(__file__).resolve().parent
 HOST, PORT = "127.0.0.1", 8000
-MAX_BODY = 1_500_000
+MAX_BODY = 8_000_000
 RUN_SLOTS = threading.BoundedSemaphore(2)   # keep an old laptop responsive
 
 PLATFORMS = ("codeforces", "leetcode")

@@ -69,11 +69,11 @@ const CP = (() => {
   }
   function closeOverlays() { $$(".overlay.open").forEach((o) => o.classList.remove("open")); }
 
-  const SHORTCUTS = [["Run examples", ["Ctrl", "Enter"]], ["Save code locally", ["Ctrl", "S"]], ["Focus search", ["/"]], ["Close dialog", ["Esc"]], ["Shortcut help", ["?"]]];
+  const SHORTCUTS = [["Run examples", ["Ctrl", "Enter"]], ["Submit (records the attempt)", ["Ctrl", "Shift", "Enter"]], ["Save code", ["Ctrl", "S"]], ["Toggle comment (editor)", ["Ctrl", "/"]], ["Focus search", ["/"]], ["Close dialog", ["Esc"]], ["Shortcut help", ["?"]]];
   function showHelp() {
     overlay("help-overlay", `<div class="modal-head"><h2>Keyboard shortcuts</h2><button class="icon-btn" data-close aria-label="Close">✕</button></div>` +
       SHORTCUTS.map(([n, k]) => `<div class="sc-row"><span>${n}</span><span>${k.map((x) => `<kbd>${x}</kbd>`).join("")}</span></div>`).join("") +
-      `<p class="faint" style="margin:14px 0 0;font-size:12.5px">In the editor: <kbd>Tab</kbd> indents (also whole selections), <kbd>Shift</kbd>+<kbd>Tab</kbd> outdents, <kbd>Enter</kbd> keeps indentation.</p>`);
+      `<p class="faint" style="margin:14px 0 0;font-size:12.5px">In the editor: <kbd>Tab</kbd> indents (also whole selections), <kbd>Shift</kbd>+<kbd>Tab</kbd> outdents, <kbd>Enter</kbd> keeps and extends indentation, brackets and quotes auto-close. <kbd>Esc</kbd> then <kbd>Tab</kbd> moves focus out of the editor.</p>`);
   }
 
   const handlers = {};

@@ -1691,3 +1691,14 @@ Analyze Improvement
 ```
 
 The goal is to make the platform useful as a long-term **offline Codeforces + LeetCode training environment**, while keeping the implementation lightweight enough to run on modest hardware.
+
+
+---
+
+# Problem-page IDE (editor, results panel)
+
+* `web/static/editor.js` - dependency-free editor: a native `<textarea>` (native undo/redo, copy/paste, IME) with a syntax-highlight overlay. Pure editing logic lives in `editor.js` `core` and is unit-tested: `node runner/tests/test_editor_core.js`.
+* `web/static/editor.css` - editor, layout and results-panel styles.
+* Shortcuts: `Ctrl+Enter` run, `Ctrl+Shift+Enter` submit, `Ctrl+S` save, `Ctrl+/` comment, `Tab`/`Shift+Tab` indent/dedent (also for selections), `Esc` then `Tab` leaves the editor.
+* Code storage: autosaved draft in `cp-offline-<id>:<lang>` plus an explicit copy (`Ctrl+S`) in `cp-offline-<id>:<lang>:saved`. Submitting, Clear and Reset never delete the saved copy.
+* Runner limits (`runner/engine.py`): 5 s per test, 1 GiB memory, 8 MB written output, 1 MiB of stdout/stderr kept per stream (a notice appears when the runner had to cut), 40 s total budget per Run/Submit. Failures carry `error_kind`, `error_title`, `exit_code`, `signal`.
